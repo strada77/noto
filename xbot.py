@@ -2,7 +2,7 @@
 
 import XBOT
 from XBOT.lib.curve.ttypes import *
-#from datetime import datetime
+from datetime import datetime
 import time,random,sys,json,codecs,threading,glob,re
 
 cl = XBOT.LINE()
@@ -24,7 +24,9 @@ print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpMessage =""" X Bot
+helpMessage =""" Φ x̶ ̶b̶o̶t̶z̶ Φ
+===========================================
+
 [Id︎]
 [Mid]
 [Me︎]
@@ -45,9 +47,12 @@ helpMessage =""" X Bot
 [Up]
 [Cv join]
 
+==============================
 [*] Command in the groups [*]
+==============================
 
 [Curl]
+[Clone @]
 [Ourl]
 [url]
 [url:「Group ID」]
@@ -59,7 +64,9 @@ helpMessage =""" X Bot
 [Gn 「group name」]
 [Nk 「name」]
 
+============================
 [*] Command kicker only [*]
+============================
 
 [Bye]
 [Kill ban]
@@ -77,6 +84,10 @@ helpMessage =""" X Bot
 [Respo︎n]
 [Bot cancel]
 [Title:]
+
+======================
+     <Last Command>
+======================
 """
 KAC=[cl,ki,kk,kc]
 mid = cl.getProfile().mid
@@ -547,7 +558,7 @@ def bot(op):
                     kc.sendText(msg.to,"It can't be used besides the group.")
             elif "Kick " in msg.text:
                 midd = msg.text.replace("Kick ","")
-                cl.kickoutFromGroup(msg.to,[midd])
+                cl.kickoutFromGroup(msg.to,[midd])#kickbymid
             elif "Cv1 kick " in msg.text:
                 midd = msg.text.replace("Cv1 kick ","")
                 ki.kickoutFromGroup(msg.to,[midd])
@@ -691,7 +702,7 @@ def bot(op):
                     X.preventJoinByTicket = False
                     kk.updateGroup(X)
                     if wait["lang"] == "JP":
-                        kk.sendText(msg.to,"Done Chivas")
+                        kk.sendText(msg.to,"Done Bos")
                     else:
                         kk.sendText(msg.to,"already open")
                 else:
@@ -705,7 +716,7 @@ def bot(op):
                     X.preventJoinByTicket = False
                     kc.updateGroup(X)
                     if wait["lang"] == "JP":
-                        kc.sendText(msg.to,"Done Chivas")
+                        kc.sendText(msg.to,"Done bos")
                     else:
                         kc.sendText(msg.to,"already open")
                 else:
