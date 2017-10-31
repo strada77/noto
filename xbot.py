@@ -108,6 +108,12 @@ wait = {
     "protectionOn":True,
     "atjointicket":False
     }
+contact = cl.getProfile()
+backup = cl.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
 
 wait2 = {
     'readPoint':{},
@@ -1781,6 +1787,34 @@ def bot(op):
                     ki.sendText(msg.to,"Blacklist emang pantas tuk di usir")
                     kk.sendText(msg.to,"Blacklist emang pantas tuk di usir")
                     kc.sendText(msg.to,"Blacklist emang pantas tuk di usir")
+#--------------------------copy----------
+            if "Clone @" in msg.text:
+               if msg.toType == 2:
+                   print"[Copy]"
+                   _name = msg.text.replace("Clone @","")
+                   _nametarget = _name.rstrip(' ')
+                   gs = cl.getGroup(msg.to)
+                   targets=[]
+                   for g in gs.members:
+                       if _nametarget == g.displayName:
+                          targets.append(g.mid)
+                   if targets == []:
+                       cl.sendText(msg.to,"Not Found")
+                   else:
+                       for target in targets:
+                           try:
+                               cl.CloneContactProfile(target)
+                               cl.sendText(msg.to,"Success Copy")
+                           except Exception as e:
+                               print e
+            elif msg.text in ["Backup","backup"]:
+                    try:
+                       cl.updateDisplayPicture(backup.pictureStatus)
+                       cl.updateProfile(backup)
+                       cl.sendText(msg.to, "Telah kembali semula")
+                    except Exception as e:
+                       cl.sendText(msg.to, str(e))
+#--------------------------------------------------------------
             elif msg.text in ["Clear"]:
                 if msg.toType == 2:
                     group = cl.getGroup(msg.to)
